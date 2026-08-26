@@ -44,7 +44,7 @@ export default function Navbar({ ready }) {
           <span className="text-accent">.</span>
         </a>
 
-        <ul className="flex items-center gap-5 sm:gap-8">
+        <ul className="flex items-center gap-3 sm:gap-5 md:gap-8">
           {LINKS.map((link) => (
             <li key={link.href}>
               <a

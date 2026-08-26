@@ -24,16 +24,20 @@ class SceneErrorBoundary extends Component {
 /**
  * IntroGate — orchestrates the 2–3 second 3D launch.
  *
- * The intro always attempts to render. Any genuine failure (slow chunk load,
- * WebGL error, hang) falls back to the Hero via the error boundary + safety
- * timeout — the visitor can never get stuck on a loading screen.
+ * On mobile (<=639px, matching the project's sm: breakpoint), the intro is
+ * skipped entirely — the Hero animates in immediately.
+ *
+ * On tablet and desktop the intro always attempts to render. Any genuine
+ * failure (slow chunk load, WebGL error, hang) falls back to the Hero via
+ * the error boundary + safety timeout.
  */
 export default function IntroGate({ onComplete }) {
   const { theme } = useSettings()
 
-  // Always try to show the3D intro. The error boundary and safety timeout
-  // handle genuine failures — no heuristic gate needed.
-  const [phase, setPhase] = useState('loading')
+  const isMobile =
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 639px)').matches
+
+  const [phase, setPhase] = useState(isMobile ? 'done' : 'loading')
   const finishedRef = useRef(false)
 
   const finish = useCallback(() => {
@@ -49,16 +53,17 @@ export default function IntroGate({ onComplete }) {
   // Guard ONLY the loading phase: if the lazy chunk stalls past the timeout,
   // fall back. Once the scene mounts, the scene's own timeline drives the end.
   useEffect(() => {
-    if (phase !== 'loading') return undefined
+    if (isMobile || phase !== 'loading') return undefined
     const t = window.setTimeout(finish, INTRO.loadTimeout)
     return () => window.clearTimeout(t)
-  }, [phase, finish])
+  }, [isMobile, phase, finish])
 
   // Absolute safety cap — even a hung scene cannot block the site.
   useEffect(() => {
+    if (isMobile) return undefined
     const t = window.setTimeout(finish, INTRO.loadTimeout + INTRO.duration + 1200)
     return () => window.clearTimeout(t)
-  }, [finish])
+  }, [isMobile, finish])
 
   const handleSceneReady = useCallback(() => setPhase('playing'), [])
 
@@ -69,7 +74,7 @@ export default function IntroGate({ onComplete }) {
     }
   }, [phase, onComplete])
 
-  if (phase === 'done') return null
+  if (isMobile || phase === 'done') return null
 
   return (
     <div

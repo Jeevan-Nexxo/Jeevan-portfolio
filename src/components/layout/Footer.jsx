@@ -34,7 +34,7 @@ export default function Footer() {
         >
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{FOOTER.tagline}</p>
 
-          <ul className="flex items-center gap-6">
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {LINKS.map((link) => (
               <li key={link.label}>
                 <a

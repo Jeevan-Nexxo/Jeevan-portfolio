@@ -58,7 +58,7 @@ function ProjectCard({ project }) {
   return (
     <article
       aria-label={`${project.name} — ${project.status}`}
-      className={`relative flex h-full flex-col bg-bg transition-colors duration-300 ${
+      className={`relative flex h-full flex-col overflow-hidden bg-bg transition-colors duration-300 ${
         hovered && pointerFine ? 'bg-surface' : ''
       }`}
       onMouseEnter={() => setHovered(true)}
@@ -122,7 +122,7 @@ function ProjectCard({ project }) {
 
       {/* Content */}
       <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="flex items-baseline gap-3">
             <span className="font-mono text-xs text-accent">{project.index}</span>
             <h3 className="font-display text-xl font-semibold tracking-tight md:text-2xl">
@@ -170,7 +170,7 @@ function StatusBadge({ status }) {
 
   return (
     <span
-      className={`flex shrink-0 items-center gap-2 whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.14em] ${tone.text}`}
+      className={`flex shrink items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] ${tone.text}`}
     >
       <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
         {tone.pulse && (

@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { PROFILE } from '../../content/profile'
 
 const LINKS = [
-  { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
+  { label: 'Work', href: '#work' },
   { label: 'Contact', href: '#contact' },
 ]
 

@@ -21,10 +21,10 @@ Until an asset exists, `SmartImage` renders a clean themed placeholder
 ### 1. Resume PDF
 - **Filename:** `resume.pdf`
 - **Type:** PDF document
-- **Place at:** `public/assets/resume/resume.pdf`
+- **Place at:** `public/assets/resume/jeevansri_resume.pdf`
 - **Used in:** Contact → "Download Resume" button (`PROFILE.resumePath`)
 - **Required:** YES — the download button currently 404s silently.
-- **Specs:** Any size; keep under ~2 MB. Name stays `resume.pdf`.
+- **Specs:** Any size; keep under ~2 MB. Name stays `jeevansri_resume.pdf`.
 
 ### 2. APEX project preview
 - **Filename:** `apex.jpg`

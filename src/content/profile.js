@@ -47,13 +47,13 @@ export const PROFILE = {
   },
 
   socials: {
-    github: { label: 'GitHub', url: 'https://github.com/Lizz-Gentooo' },
+    github: { label: 'GitHub', url: 'https://github.com/Jeevan-Nexxo' },
     linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jeevansri-dev' },
     instagram: { label: 'Instagram', url: 'https://www.instagram.com/_.st4zx.exe._/' },
   },
 
   /** Resume PDF placed manually in public/assets/resume/ — see ASSETS.md */
-  resumePath: '/assets/resume/resume.pdf',
+  resumePath: '/assets/resume/Jeevansri_resume.pdf',
 
   /** Contact section photo — replaceable, see ASSETS.md */
   contactPhoto: '/assets/photos/contact-casual.jpg',

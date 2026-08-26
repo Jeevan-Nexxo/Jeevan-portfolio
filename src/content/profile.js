@@ -53,7 +53,7 @@ export const PROFILE = {
   },
 
   /** Resume PDF placed manually in public/assets/resume/ — see ASSETS.md */
-  resumePath: '/assets/resume/Jeevansri_resume.pdf',
+  resumePath: '/assets/resume/jeevansri_resume.pdf',
 
   /** Contact section photo — replaceable, see ASSETS.md */
   contactPhoto: '/assets/photos/contact-casual.jpg',

@@ -12,10 +12,4 @@ export const INTRO = {
   loadTimeout: 3000,
   /** Fade-out transition length while handing off to the Hero (ms). */
   exitFade: 650,
-  /**
-   * Devices that likely can't handle smooth WebGL skip the intro:
-   * ≤2 logical cores or <4GB device memory (when reported).
-   */
-  lowEndCores: 2,
-  lowEndMemoryGB: 4,
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Device capability snapshot used by the custom cursor and the 3D intro.
+ * Device capability snapshot used by Projects hover and the Contact Easter egg.
  * Re-evaluates when the user changes motion preference mid-session.
  */
 export function useDeviceCapability() {

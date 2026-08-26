@@ -1,7 +1,6 @@
 # ASSETS — What To Provide For The Portfolio
 
-Single checklist of every asset/content item the code references or will need.
-Drop files into `public/` exactly at the paths below — no code changes needed.
+Drop files into `public/` at the paths listed below — no code changes needed.
 Until an asset exists, `SmartImage` renders a clean themed placeholder
 ("visual coming soon") instead of a broken image, so nothing looks broken.
 
@@ -11,117 +10,117 @@ Until an asset exists, `SmartImage` renders a clean themed placeholder
 
 | File | Used by |
 | --- | --- |
-| `public/favicon.svg` | Browser tab icon — custom gold "J" mark |
+| `public/favicon.svg` | Browser tab icon — gold "J" mark |
+| `public/assets/resume/jeevansri_resume.pdf` | Contact → "Download Resume" button |
 | `public/assets/photos/contact-casual.jpg` | Contact section photo (portrait polaroid) |
+
+---
+
+## 🎬 3D Intro (existing — no action required)
+
+The 3D launch animation is compiled and lazy-loaded automatically.
+
+| Component | Path | Purpose |
+| --- | --- | --- |
+| `IntroGate` | `src/components/intro/IntroGate.jsx` | Orchestrates load → play → exit overlay |
+| `Scene3D` | `src/components/intro/Scene3D.jsx` | R3F canvas: wireframe cube + orbiting particles + drifting light |
+| Config | `src/config/introConfig.js` | Timing constants (2.6s play, 3s load timeout, 650ms fade) |
+| Dependencies | `three`, `@react-three/fiber` in `package.json` | R3F runtime |
+
+Build output: lazy chunk `dist/assets/Scene3D-*.js` (~850 KB).
+
+**Fallbacks (built-in):** error boundary → skip to Hero; load timeout → skip.
+No heuristic gates — the intro always attempts to render. No Admin toggle exists.
 
 ---
 
 ## 🔴 REQUIRED — missing right now
 
-### 1. Resume PDF
-- **Filename:** `resume.pdf`
-- **Type:** PDF document
-- **Place at:** `public/assets/resume/jeevansri_resume.pdf`
-- **Used in:** Contact → "Download Resume" button (`PROFILE.resumePath`)
-- **Required:** YES — the download button currently 404s silently.
-- **Specs:** Any size; keep under ~2 MB. Name stays `jeevansri_resume.pdf`.
-
-### 2. APEX project preview
+### 1. APEX project preview
 - **Filename:** `apex.jpg`
 - **Type:** Image (screenshot / UI mockup collage)
 - **Place at:** `public/assets/projects/apex.jpg`
-- **Used in:** Projects section — featured card, expands full-width on focus
-- **Required:** YES (flagship project)
+- **Used in:** Projects card 01 — 16:9 media area
 - **Specs:** Landscape **16:9**, minimum **1600×900**, JPG or WebP, dark-friendly.
   Best content: dashboard/home view of the platform, or a 2–3 screenshot collage.
 
-### 3. Birthday Experience preview
+### 2. Birthday Experience preview
 - **Filename:** `birthday-experience.jpg`
 - **Type:** Image (screenshot)
 - **Place at:** `public/assets/projects/birthday-experience.jpg`
-- **Used in:** Projects section card (16:9 media area)
-- **Required:** YES
+- **Used in:** Projects card 03 — 16:9 media area
 - **Specs:** Landscape **16:9**, minimum **1600×900**.
   Best moment: a scene with strong visuals (balloons / memories / welcome screen).
 
-### 4. Arun Portfolio preview
+### 3. Arun Portfolio preview
 - **Filename:** `arun-portfolio.jpg`
 - **Type:** Image (full-page screenshot)
 - **Place at:** `public/assets/projects/arun-portfolio.jpg`
-- **Used in:** Projects section card (16:9 media area)
-- **Required:** YES
+- **Used in:** Projects card 02 — 16:9 media area
 - **Specs:** Landscape **16:9**, minimum **1600×900**. Hero section of the site works best.
 
-### 5. This Portfolio preview
+### 4. This Portfolio preview
 - **Filename:** `this-portfolio.jpg`
-- **Type:** Image (screenshot of this site itself)
+- **Type:** Image (screenshot of this site)
 - **Place at:** `public/assets/projects/this-portfolio.jpg`
-- **Used in:** Projects card 04 media area
-- **Required:** YES
+- **Used in:** Projects card 04 — 16:9 media area
 - **Specs:** Landscape **16:9**, minimum **1600×900**. A desktop hero shot
   (optionally composited with a mobile view) represents it best.
 
-### 6. AI Internship certificate scan
+### 5. AI Internship certificate scan
 - **Filename:** `ai-internship.jpg`
 - **Type:** Image (certificate scan/photo, straightened & cropped)
 - **Place at:** `public/assets/certificates/ai-internship.jpg`
 - **Used in:** Certifications → "Preview" expandable area (emphasized card)
-- **Required:** YES
 - **Specs:** Landscape **4:3**, minimum **1200×900**, readable text after crop.
 
-### 7. C Essentials 1 certificate scan
+### 6. C Essentials 1 certificate scan
 - **Filename:** `c-essentials-1.jpg`
 - **Type:** Image (certificate scan/photo)
 - **Place at:** `public/assets/certificates/c-essentials-1.jpg`
 - **Used in:** Certifications → "Preview" expandable area
-- **Required:** YES
 - **Specs:** Landscape **4:3**, minimum **1200×900**.
 
-### 8. MonoFik font file (LIZZ Easter egg)
-- **Filename:** `MonoFik.woff2` (or `MonoFik.ttf`)
-- **Type:** Font file
+### 7. MonoFik font file (LIZZ Easter egg)
+- **Filename:** `MonoFik.woff2` (or `.ttf`)
 - **Place at:** `public/assets/fonts/MonoFik.woff2`
-- **Used in:** Contact section — the hidden "LIZZ" cursor-reveal typography
-- **Required:** YES for the intended look — until added, the text silently
-  renders in the Space Grotesk fallback (nothing breaks).
-- **Specs:** Regular weight is fine; bold styling is applied via CSS.
+- **Used in:** Contact section — hidden "LIZZ" cursor-reveal typography
+- **Until added:** text renders in Space Grotesk fallback (nothing breaks).
 
-### 9. Open Graph share image
+### 8. Open Graph share image
 - **Filename:** `og-image.png`
 - **Type:** PNG image (social link preview)
 - **Place at:** `public/assets/branding/og-image.png`
 - **Used in:** WhatsApp/Discord/Twitter link previews (`index.html` OG + Twitter meta)
-- **Required:** YES before sharing the link anywhere public
 - **Specs:** Exactly **1200×630**. Suggested: dark `#111111` background, big
   "JEEVANSRI G." display type with gold accent dot, matching favicon identity.
 
 ---
 
-## 🟡 CONTENT VALUES (not files — tell me the value and I'll wire them)
+## 🟡 Live URLs — add later in code
 
-Project cards use **Live URLs only** — by design there are no GitHub fields in
-project data; GitHub links live exclusively in the Contact section.
+Project cards show **Live URL** only (no GitHub fields in project data).
+GitHub links live in the Contact section's socials block.
 
-To add a Live URL later, set `liveUrl` in `src/content/projects.js` on the
-matching project object (`null` currently renders the disabled "Live · Soon"
-state — no other change is needed):
+To wire a URL, set `liveUrl` on the matching object in `src/content/projects.js`.
+`null` renders the disabled `Live · Soon` state; no other change is needed.
 
-| Project | Where to add | Currently | Needed |
+| Project | Data path | Current | Status |
 | --- | --- | --- | --- |
-| APEX | `projects.js → apex.liveUrl` | `null` ("Live · Soon") | URL when deployed |
-| Arun Portfolio | `projects.js → arun-portfolio.liveUrl` | `null` ("Live · Soon") | URL of the deployed site |
-| Birthday Experience | `projects.js → birthday-experience.liveUrl` | `null` ("Live · Soon") | **Reserved slot — add after deployment** |
+| APEX | `projects.js → apex.liveUrl` | `null` | Waiting for deployment |
+| Arun Portfolio | `projects.js → arun-portfolio.liveUrl` | `null` | Waiting for deployment |
+| Birthday Experience | `projects.js → birthday-experience.liveUrl` | `null` | **Reserved — add after deployment** |
+| This Portfolio | `projects.js → this-portfolio.liveUrl` | `#top` | Already wired (smooth-scrolls to top of site) |
 
 ---
 
 ## 🟢 OPTIONAL — nice to have later
 
-| Filename | Place at | Purpose | Required |
-| --- | --- | --- | --- |
-| `apple-touch-icon.png` (180×180) | `public/` | iOS home-screen icon | Optional |
-| `og-preview-alt.png` variants | `public/assets/branding/` | Alternate share images | Optional |
-| Higher-res `contact-casual.jpg` | replace existing | Sharper on large screens (current file is fine) | Optional |
-| WebP versions of all images above | alongside JPGs | ~30% smaller loads | Optional |
+| Filename | Place at | Purpose |
+| --- | --- | --- |
+| `apple-touch-icon.png` (180×180) | `public/` | iOS home-screen icon |
+| Higher-res `contact-casual.jpg` | replace existing | Sharper on large screens (current file is fine) |
+| WebP versions of images above | alongside JPGs | ~30% smaller loads |
 
 ---
 
@@ -130,5 +129,4 @@ state — no other change is needed):
 - Project previews → **16:9** (1600×900+), landscape
 - Certificate scans → **4:3** (1200×900+), landscape, text readable
 - Social share image → **1200×630** PNG
-- All images are rendered with `object-cover`, so exact ratios matter less than
-  keeping the important subject centered.
+- All images use `object-cover`, so keeping the important subject centred matters more than exact ratios.

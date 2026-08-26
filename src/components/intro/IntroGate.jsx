@@ -1,7 +1,6 @@
 import { Component, Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { INTRO } from '../../config/introConfig'
 import { useSettings } from '../../context/SettingsContext'
-import { useDeviceCapability } from '../../hooks/useDeviceCapability'
 
 const Scene3D = lazy(() => import('./Scene3D'))
 
@@ -25,22 +24,16 @@ class SceneErrorBoundary extends Component {
 /**
  * IntroGate — orchestrates the 2–3 second 3D launch.
  *
- * The intro is the default experience and always plays, except when:
- *  - User has a reduced-motion preference
- *  - Device looks incapable of smooth WebGL
- *
- * Any failure (slow chunk load, WebGL error, hang) skips straight to the
- * Hero — the visitor can never get stuck on a loading screen.
+ * The intro always attempts to render. Any genuine failure (slow chunk load,
+ * WebGL error, hang) falls back to the Hero via the error boundary + safety
+ * timeout — the visitor can never get stuck on a loading screen.
  */
 export default function IntroGate({ onComplete }) {
   const { theme } = useSettings()
-  const { reducedMotion, lowEnd } = useDeviceCapability()
 
-  // The intro always plays; only genuine capability constraints skip it.
-  const shouldRun = !reducedMotion && !lowEnd
-  // 'loading' → chunk downloading · 'playing' → scene mounted ·
-  // 'exiting' → fading out over the Hero entrance · 'done' → gone
-  const [phase, setPhase] = useState(() => (shouldRun ? 'loading' : 'done'))
+  // Always try to show the3D intro. The error boundary and safety timeout
+  // handle genuine failures — no heuristic gate needed.
+  const [phase, setPhase] = useState('loading')
   const finishedRef = useRef(false)
 
   const finish = useCallback(() => {
@@ -63,16 +56,14 @@ export default function IntroGate({ onComplete }) {
 
   // Absolute safety cap — even a hung scene cannot block the site.
   useEffect(() => {
-    if (!shouldRun) return undefined
     const t = window.setTimeout(finish, INTRO.loadTimeout + INTRO.duration + 1200)
     return () => window.clearTimeout(t)
-  }, [shouldRun, finish])
+  }, [finish])
 
   const handleSceneReady = useCallback(() => setPhase('playing'), [])
 
   useEffect(() => {
     if (phase === 'done' && !finishedRef.current) {
-      // Skipped entirely (reduced motion / low-end device)
       finishedRef.current = true
       onComplete()
     }

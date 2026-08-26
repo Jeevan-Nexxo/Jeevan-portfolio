@@ -23,10 +23,10 @@ export const PROJECTS = [
     name: 'Arun Portfolio',
     status: 'Completed',
     description:
-      'Responsive personal portfolio website designed and developed for a friend, Featuring dark/light theme, presistent settings, scroll-triggered reveals and ambinient visuals.',
+      'Responsive personal portfolio website designed and developed for a friend, Featuring dark/light theme, persistent settings, scroll-triggered reveals and ambient visuals.',
     tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
     image: '/assets/projects/arun-portfolio.jpg',
-    liveUrl: null, // TODO — add live URL when available (see ASSETS.md)
+    liveUrl: 'https://arunvasudevc.vercel.app/', // TODO — add live URL when available (see ASSETS.md)
   },
   {
     id: 'birthday-experience',

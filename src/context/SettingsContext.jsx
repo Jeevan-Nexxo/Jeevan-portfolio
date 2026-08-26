@@ -9,7 +9,7 @@ const SettingsContext = createContext(null)
  * Also syncs the active theme to <html data-theme> for the token system.
  *
  * Note: the 3D launch intro is not a setting — it always plays automatically
- * (with built-in reduced-motion / low-end-device fallbacks).
+ * (with error-boundary and safety-timeout fallbacks).
  */
 export function SettingsProvider({ children }) {
   const [settings, setSettings] = useState(() => {

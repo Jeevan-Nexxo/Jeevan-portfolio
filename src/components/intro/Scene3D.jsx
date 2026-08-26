@@ -158,7 +158,7 @@ function CubeNode({ position, color }) {
   return (
     <mesh ref={ref} position={position} userData={{ baseOpacity: 1 }}>
       <sphereGeometry args={[0.06, 12, 12]} />
-      <meshBasicMaterial color={accent} transparent />
+      <meshBasicMaterial color={color} transparent />
     </mesh>
   )
 }

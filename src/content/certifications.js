@@ -23,4 +23,13 @@ export const CERTIFICATIONS = [
     emphasized: false,
     note: 'Foundations of C programming through the Cisco Networking Academy.',
   },
+  {
+  id: 'znaly-lead-generation',
+  title: 'Lead Generation Internship',
+  issuer: 'Znaly Technologies, Coimbatore',
+  date: 'September 2026 – October 2026',
+  image: '/assets/certificates/znaly-internship.jpg',
+  emphasized: true,
+  note: 'Completed an internship as a Lead Generation Intern, gaining practical experience in prospect research, data collection, identifying potential customers, and supporting business development activities.',
+  },
 ]

@@ -11,7 +11,7 @@ export const CERTIFICATIONS = [
     issuer: 'AI Explore · EFTSOONS Technologies (OPC) Pvt. Ltd.',
     date: 'May 2026 — June 2026',
     image: '/assets/certificates/ai-internship.jpg',
-    emphasized: true,
+    emphasized: false,
     note: 'Two-week practical internship in the AI department.',
   },
   {
@@ -20,7 +20,7 @@ export const CERTIFICATIONS = [
     issuer: 'RMV Polytechnic College · Cisco Networking Academy',
     date: 'Completed — 20 April 2026',
     image: '/assets/certificates/c-essentials-1.jpg',
-    emphasized: false,
+    emphasized: true,
     note: 'Foundations of C programming through the Cisco Networking Academy.',
   },
   {
@@ -29,7 +29,7 @@ export const CERTIFICATIONS = [
   issuer: 'Znaly Technologies, Coimbatore',
   date: 'September 2026 – October 2026',
   image: '/assets/certificates/znaly-internship.jpg',
-  emphasized: true,
+  emphasized: false,
   note: 'Completed an internship as a Lead Generation Intern, gaining practical experience in prospect research, data collection, identifying potential customers, and supporting business development activities.',
   },
 ]
